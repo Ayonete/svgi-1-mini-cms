@@ -1,6 +1,6 @@
 import { BaseAbstractEntity } from "src/global/base-abstract.entity";
-import { Column, Entity, PrimaryColumn } from "typeorm"
-
+import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm"
+import { Users } from  './user.entity'
 
 @Entity()
 export abstract class Profile extends BaseAbstractEntity{
@@ -16,4 +16,11 @@ export abstract class Profile extends BaseAbstractEntity{
 
     @Column()
     Photo: string
+
+    @JoinColumn()
+    @OneToOne(type => Users, users => users.profile, {onDelete: 'CASCADE'})
+    users: Users;
+
+
+
 }

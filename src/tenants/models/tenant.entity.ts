@@ -44,7 +44,7 @@ export class Tenant extends BaseAbstractEntity{
     @Column({default: false})
     active: boolean
     
-    @OneToOne(type => CustomTheme,CustomTheme => CustomTheme.tenant )
+    @OneToOne(type => CustomTheme,CustomTheme => CustomTheme.tenant, {cascade: true} )
     CustomTheme: CustomTheme
 
     @ManyToMany(type => Theme)

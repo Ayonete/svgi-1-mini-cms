@@ -60,7 +60,7 @@ export class Users extends BaseAbstractEntity{
     @Column()
     otpSecret: string;
     
-    @OneToOne(type => Profile)
+    @OneToOne(type => Profile, profile => profile.users, {cascade: true})
     @JoinColumn()
     profile: Profile;
 

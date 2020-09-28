@@ -15,7 +15,7 @@ export class CustomTheme extends BaseAbstractEntity{
     properties: string
      
     @JoinColumn()
-    @OneToOne(type => Tenant, tenant => tenant.CustomTheme)
+    @OneToOne(type => Tenant, tenant => tenant.CustomTheme, {onDelete: 'CASCADE'})
     tenant: Tenant 
 
 }
