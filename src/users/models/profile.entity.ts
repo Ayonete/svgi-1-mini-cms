@@ -17,10 +17,10 @@ export abstract class Profile extends BaseAbstractEntity{
     @Column()
     Photo: string
 
-    @JoinColumn()
+    /* @JoinColumn()
     @OneToOne(type => Users, users => users.profile, {onDelete: 'CASCADE'})
     users: Users;
-
+ */
 
 
 }

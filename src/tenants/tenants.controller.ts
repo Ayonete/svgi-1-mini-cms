@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { UpdateResult } from 'typeorm/query-builder/result/UpdateResult';
 import { CreateTenantDto } from './dto/create/create-tenant.dto';
 import { UpdateTenantDto } from './dto/update/update-tenant.dto';
@@ -40,7 +40,7 @@ export class TenantsController {
      * Handle Get request for find by id
      */
     @Get(':id')
-    findOne(@Param('id') id: string): Promise<Tenant> {
+    findOne(@Param('id', ParseIntPipe) id: number): Promise<Tenant> {
         return this.tenantsService.findOne(id);
     }
 
@@ -51,7 +51,7 @@ export class TenantsController {
      * Handle Put request for 
      */
     @Put(':id')
-    partialUpdate(@Param('id') id: string, @Body() updateTenantDto: UpdateTenantDto): Promise<UpdateResult> {
+    partialUpdate(@Param('id', ParseIntPipe) id: number, @Body() updateTenantDto: UpdateTenantDto): Promise<UpdateResult> {
         return this.tenantsService.update1(id, updateTenantDto);
     }
 

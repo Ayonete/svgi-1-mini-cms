@@ -83,7 +83,7 @@ export class TenantsService {
      * @param id 
      * find by id
      */
-    async findOne(id: string): Promise<Tenant> {
+    async findOne(id: number): Promise<Tenant> {
         return await this.tenantRepository.findOne(id);
     }
     
@@ -112,7 +112,7 @@ export class TenantsService {
      * @param tenant 
      * Find by the id and replace the fields sent in Dto
      */
-    async update1(id: string, tenant: UpdateTenantDto): Promise<UpdateResult> {
+    async update1(id: number, tenant: UpdateTenantDto): Promise<UpdateResult> {
         return await this.tenantRepository.update(id, { ...tenant })
     }
 
